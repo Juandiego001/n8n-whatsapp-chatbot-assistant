@@ -1,0 +1,18 @@
+services:
+  n8n:
+    image: n8nio/n8n
+    container_name: n8n
+    environment:
+      - N8N_RUNNERS_ENABLED=true
+      - N8N_HOST=<host>
+      - N8N_PORT=<puerto>
+      - WEBHOOK_TUNNEL_URL=<url-mostrada-en-el-video>
+      - VUE_APP_URL_BASE_API=<url-mostrada-en-el-video>
+    ports:
+      - "5678:5678"
+    volumes:
+      - n8n_data:/home/node/.n8n
+    restart: unless-stopped
+
+volumes:
+  n8n_data:
